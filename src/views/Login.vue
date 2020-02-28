@@ -14,13 +14,13 @@
             md="4"
           >
           <v-row>
-            <v-text-field dark solo color="primary"
+            <v-text-field dark solo color="indigo"
             dense clearable rounded
             prepend-icon="fa-smile-wink"
             background-color="#202124"></v-text-field>
             </v-row>
              <v-row>
-            <v-text-field dark solo color="primary"
+            <v-text-field dark solo color="indigo"
              dense clearable rounded
              background-color="#202124"
              prepend-icon="fa-key"
@@ -47,10 +47,23 @@ export default {
   },
   methods: {
     login() {
-        console.log("halo world")
         let that=this;
         this.$http.get("/login").then(res => {
-            console.log(res);
+            if (res.data.code === 200) {
+                this.$store.commit("snackbar/setSnackbar", {
+                    show: true,
+                    message: res.data.msg,
+                    color: "black",
+                    top: true
+                });
+            } else {
+                this.$store.commit("snackbar/setSnackbar", {
+                    show: true,
+                    message: res.data.msg,
+                    color: "error",
+                    top: true
+                });
+            }
         });
     }
   }
