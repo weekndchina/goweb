@@ -20,7 +20,7 @@
             background-color="#202124"></v-text-field>
             </v-row>
              <v-row>
-            <v-text-field dark solo color="primary" 
+            <v-text-field dark solo color="primary"
              dense clearable rounded
              background-color="#202124"
              prepend-icon="fa-key"
@@ -29,7 +29,7 @@
              <v-row>
              <v-btn  class="ml-10" color="#202124" dark ><v-icon left>fa-registered</v-icon>注册</v-btn>
              <v-spacer></v-spacer>
-             <v-btn  class="mr-10" color="#202124" dark ><v-icon left>fa-sign-in-alt</v-icon>登陆</v-btn>
+             <v-btn  class="mr-10" color="#202124" dark @click="login()"><v-icon left>fa-sign-in-alt</v-icon>登陆</v-btn>
              </v-row>
           </v-col>
         </v-row>
@@ -46,12 +46,12 @@ export default {
     };
   },
   methods: {
-    checkLogin() {
-        this.$store.commit('setUser', {name: this.name, password: this.password})
-        setTimeout(() => {
-            this.loading = false;
-            this.$router.push("/chat");
-        }, 1000);
+    login() {
+        console.log("halo world")
+        let that=this;
+        this.$http.get("/login").then(res => {
+            console.log(res);
+        });
     }
   }
 }
