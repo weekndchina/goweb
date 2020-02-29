@@ -2,7 +2,7 @@
       <v-container
         class="fill-height"
         fluid
-        style="background:#35363a"
+         style="background: linear-gradient(to right, #24243e, #141E30, #0f0c29);"
       >
         <v-row
           align="center"
@@ -14,22 +14,21 @@
             md="4"
           >
           <v-row>
-            <v-text-field dark solo color="indigo"
-            dense clearable rounded
+            <v-text-field  dark color="indigo"
+             clearable
             prepend-icon="fa-smile-wink"
-            background-color="#202124"></v-text-field>
+></v-text-field>
             </v-row>
              <v-row>
-            <v-text-field dark solo color="indigo"
-             dense clearable rounded
-             background-color="#202124"
+            <v-text-field  dark color="indigo"
+              clearable
              prepend-icon="fa-key"
              ></v-text-field>
               </v-row>
              <v-row>
-             <v-btn  class="ml-10" color="#202124" dark ><v-icon left>fa-registered</v-icon>注册</v-btn>
+             <v-btn  class="ml-10" color="indigo"  text><v-icon left>fa-registered</v-icon>注册</v-btn>
              <v-spacer></v-spacer>
-             <v-btn  class="mr-10" color="#202124" dark @click="login()"><v-icon left>fa-sign-in-alt</v-icon>登陆</v-btn>
+             <v-btn  class="mr-10" color="indigo"  @click="login()" text><v-icon left>fa-sign-in-alt</v-icon>登陆</v-btn>
              </v-row>
           </v-col>
         </v-row>
@@ -65,7 +64,10 @@ export default {
                 });
             }
         });
-    }
+    },
+    show(){
+
+    },
   }
 }
 </script>
