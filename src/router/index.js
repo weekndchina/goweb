@@ -2,28 +2,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Meta from 'vue-meta'
-
 // Routes
-import paths from './paths'
-
-function route (path, view, name) {
-  return {
-    name: name || view,
-    path,
-    component: (resolve) => import(
-      `@/views/${view}.vue`
-    ).then(resolve)
-  }
-}
+import { publicRoute, privateRoute } from './paths'
+const routes = publicRoute.concat(privateRoute)
 
 Vue.use(Router)
 
 // Create a new router
 const router = new Router({
-  mode: 'history',
-  routes: paths.map(path => route(path.path, path.view, path.name)).concat([
-    { path: '*', redirect: '/' }
-  ]),
+  mode: 'hash',
+  routes: routes,
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition

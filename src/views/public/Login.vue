@@ -9,7 +9,7 @@
           justify="center"
         >
           <v-col
-            cols="12"
+            cols="6"
             sm="8"
             md="4"
           >
@@ -26,9 +26,9 @@
              ></v-text-field>
               </v-row>
              <v-row>
-             <v-btn  class="ml-10" color="indigo"  text><v-icon left>fa-registered</v-icon>注册</v-btn>
+             <v-btn  class="ml-10" color="deep-orange"  text><v-icon left>fa-registered</v-icon>注册</v-btn>
              <v-spacer></v-spacer>
-             <v-btn  class="mr-10" color="indigo"  @click="login()" text><v-icon left>fa-sign-in-alt</v-icon>登陆</v-btn>
+             <v-btn  class="mr-10" color="indigo"  to='/task' text><v-icon left>fa-sign-in-alt</v-icon>登陆</v-btn>
              </v-row>
           </v-col>
         </v-row>

@@ -1,10 +1,6 @@
 <template>
   <v-app>
-   <v-content>
-        <router-view />
-    </v-content>
-
-
+    <router-view></router-view>
    <v-snackbar
        :value="$store.state.snackbar.snackbar.show"
        :multi-line="$store.state.snackbar.snackbar.multiLine"
