@@ -1,5 +1,8 @@
 const Menu = [
         { text: '任务', icon: 'fa-tasks', component: "task"},
+        { text: '统计', icon: 'fa-chart-line', component: "home"},
+        { text: '日志', icon: 'fa-calendar-check', component: "log"},
+        { text: '邮件', icon: 'fa-mail-bulk', component: "mail"},
 ]
 
 Menu.forEach(item => {

@@ -3,18 +3,18 @@
       v-model="drawer"
       app
       expand-on-hover
-      clipped
+      fixed
       floating
+      mini-variant
       dark
-      color="transparent"
+      color="grey darken-4"
     >
-    <v-list nav
+    <v-list nav dense
        class="py-0" >
-      <v-list-item two-line>
-            <v-list-item-avatar color="red" small>
-                w
-            </v-list-item-avatar>
-
+      <v-list-item two-line class="px-0">
+            <v-list-item-avatar small>
+                wk
+           </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title>weeknd</v-list-item-title>
               <v-list-item-subtitle>weeknd.su@hotmail.com</v-list-item-subtitle>
@@ -22,13 +22,13 @@
       </v-list-item>
       <v-divider></v-divider>
       </v-list>
-   <v-list shaped>
-      <v-list-item-group v-model="item" color="black">
+   <v-list shaped dense>
+      <v-list-item-group v-model="item">
         <v-list-item
           v-for="(item, i) in items"
           :key="i"
           :to="item.component"
-
+          color="deep-orange lighten-1"
         >
           <v-list-item-icon>
             <v-icon v-text="item.icon" small></v-icon>
