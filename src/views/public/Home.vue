@@ -7,7 +7,6 @@
       height="48"
       dark
       color="transparent"
-      hide-on-scroll
       style="background: linear-gradient(to right, #24243e, #141E30, #0f0c29);"
     >
     <v-tabs right height="48">
