@@ -5,6 +5,7 @@ import store from '@/store'
 import vuetify from './plugins/vuetify'
 import './plugins'
 import '@/mock'
+import 'font-awesome/css/font-awesome.css'
 
 
 
