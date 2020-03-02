@@ -1,49 +1,96 @@
 <template>
-      <v-container
-        class="fill-height"
-        fluid
-         style="background: linear-gradient(to right, #24243e, #141E30, #0f0c29);"
+<v-container fill-height class="text-center" fluid style="background:linear-gradient(to right, #24243e, #141E30, #0f0c29);">
+     <v-col cols="12" md=6 sm=12 xs=12>
+    <v-row
+      align="center"
+      class="mx-auto white--text"
+      justify="center"
       >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-col
-            cols="6"
-            sm="8"
-            md="4"
-          >
-          <v-row>
-            <v-text-field  dark color="indigo"
-             clearable
-            prepend-icon="fa-smile-wink"
-></v-text-field>
-            </v-row>
-             <v-row>
-            <v-text-field  dark color="indigo"
-              clearable
-             prepend-icon="fa-key"
-             ></v-text-field>
-              </v-row>
-             <v-row>
-             <v-btn  class="ml-10" color="deep-orange"  text><v-icon left>fa-registered</v-icon>注册</v-btn>
-             <v-spacer></v-spacer>
-             <v-btn  class="mr-10" color="indigo"  to='/task' text><v-icon left>fa-sign-in-alt</v-icon>登陆</v-btn>
-             </v-row>
-          </v-col>
+       <p class='headline' dark>Meet With Us</p>
+     </v-row>
+     <v-row
+      align="center"
+      class="mx-auto"
+      justify="center"
+      >
+      <v-col cols=10>
+      <v-avatar color="grey lighten-4" v-for="img in images">
+                        <img :src="img" alt="avatar">
+        </v-avatar>
+        </v-col>
+      </v-row>
+
+       <v-row
+      align="center"
+      class="mx-auto"
+      justify="center"
+      >
+      <v-col cols=10>
+        <v-btn
+                     v-for="icon in icons"
+                     :key="icon"
+                     class="mx-3 white--text"
+                    icon
+                    >
+                   <v-icon size="20px">{{ icon }}</v-icon>
+                    </v-btn>
+                    </v-col>
+         </v-row>
+    </v-col>
+    <v-col cols="12" md=6 sm=12 xs=12 >
+    <v-row
+      align="center"
+      class="mx-auto white--text"
+      justify="center"
+      >
+       <p class='headline' dark><span class="title">RWPLUS</span></p><br>
+     </v-row>
+     <v-row
+      align="center"
+      class="mx-auto white--text"
+      justify="center"
+      >
+      <v-col cols=10>
+        <v-text-field  dark dense color='indigo' prepend-icon="fa-user-circle-o" label="电子邮件"  v-model="model.username"  placeholder="rwplus@github.com"></v-text-field>
+        </v-text-field>
+        </v-col>
         </v-row>
-      </v-container>
+            <v-row
+            align="center"
+            class="mx-auto white--text"
+            justify="center"
+         > <v-col cols=10>
+        <v-text-field  dark dense color='indigo' prepend-icon="fa-key" label="密码" type="password" v-model="model.password" placeholder="password">
+        </v-text-field>
+        </v-col>
+        </v-row>
+         <v-btn dark dense text outlined color="deep-orange" rounded dark @click="login">登录</v-btn>
+         <v-btn dark dense text outlined rounded class="ml-6">注册</v-btn>
+    </v-col>
+</v-container>
 </template>
+
+
 
 
 <script>
 export default {
-  data() {
-    return {
-      name: "",
-      password: "",
-    };
-  },
+    data: () => ({
+    loading: false,
+    model: {
+      username: 'weeknd.su@wukongbox.com',
+      password: '123456'
+    },
+    images: ['/img/1.jpeg','/img/2.jpeg','/img/3.jpeg','/img/4.jpeg','/img/5.jpeg','/img/6.jpeg','/img/7.jpeg','/img/8.jpeg','/img/9.jpeg','/img/10.jpeg',
+     '/img/11.jpeg','/img/12.jpeg','/img/13.jpeg','/img/14.jpeg','/img/15.jpeg','/img/16.jpeg','/img/17.jpeg','/img/18.jpeg','/img/19.jpeg','/img/20.jpeg'
+    ],
+    icons: [
+      'fa-qq',
+      'fa-wechat',
+      'fa-github',
+      'fa-linkedin'
+          ]
+  }),
   methods: {
     login() {
         let that=this;
