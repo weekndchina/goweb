@@ -1,7 +1,7 @@
 <template>
  <v-container grid-list-xl fluid>
  <v-row>
-    <v-col cols="3" md=3 sm=6 xs=6>
+    <v-col  md=3 sm=6 xs=6>
           <v-card
             height="80"
           >
@@ -25,7 +25,7 @@
             </div>
           </v-card>
     </v-col>
-    <v-col cols="3" md=3 sm=6 xs=6>
+    <v-col  md=3 sm=6 xs=6>
               <v-card
             height="80"
 
@@ -50,7 +50,7 @@
             </div>
           </v-card>
     </v-col>
-    <v-col cols="3" md=3 sm=6 xs=6>
+    <v-col  md=3 sm=6 xs=6>
               <v-card
             height="80"
           >
@@ -74,7 +74,7 @@
             </div>
           </v-card>
     </v-col>
-    <v-col cols="3" md=3 sm=6 xs=6>
+    <v-col  md=3 sm=6 xs=6>
            <v-card
             height="80"
           >

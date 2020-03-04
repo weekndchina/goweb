@@ -12,6 +12,11 @@ export const publicRoute = [
         name: "login",
         component: () => import("@/views/public/Login")
     },
+    {
+        path: "/watch",
+        name: "watch",
+        component: () => import("@/views/rw/Watch")
+    },
 ]
 
 
@@ -28,5 +33,5 @@ export const privateRoute = [
         component: () => import("@/views/rw/Task")
       },
     ]
-  }
+  },
 ]
