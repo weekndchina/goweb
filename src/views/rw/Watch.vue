@@ -78,6 +78,48 @@
         </v-card>
       </v-col>
     </v-row>
+    <v-row  no-gutters align="center" class="mx-auto white--text" justify="center">
+        <v-col md=10 xs=12 sm=12>
+            <v-subheader dark>资源监控</v-subheader>
+            <v-card height=200 color="transparent">
+            <v-tabs
+                background-color="#23243d"
+                center-active
+                color="cyan"
+                dark
+            >
+      <v-tab>IO</v-tab>
+      <v-tab>CPU</v-tab>
+      <v-tab>MEMORY</v-tab>
+      <v-tab>disk</v-tab>
+      <v-tab>network</v-tab>
+      <v-tab>mysql</v-tab>
+      <v-tab>redis</v-tab>
+      <v-tab>tomcat</v-tab>
+      <v-tab>nginx</v-tab>
+      <v-tab>BEANTALKD</v-tab>
+      <v-tab>Eleven</v-tab>
+      <v-tab>Twelve</v-tab>
+      <v-tab>Thirteen</v-tab>
+      <v-tab>Fourteen</v-tab>
+      <v-tab>Fifteen</v-tab>
+      <v-tab>Sixteen</v-tab>
+      <v-tab>Seventeen</v-tab>
+      <v-tab>Eighteen</v-tab>
+      <v-tab>Nineteen</v-tab>
+      <v-tab>Twenty</v-tab>
+    </v-tabs>
+    <v-card-text>
+    </v-card-text>
+    </v-card>
+        </v-col>
+    </v-row>
+    <v-row align="center" class="white--text" justify="center">
+    <v-col md=10 xs=12 sm=12>
+        <tasklog/>
+    </v-col>
+    </v-row>
+
   </v-container>
 </template>
 
@@ -90,6 +132,7 @@ export default {
     histogram: () => import("./watch/Histogram"),
     pie: () => import("./watch/Pie"),
     lined: () => import("./watch/Line"),
+    tasklog: () => import("./watch/Tasklog"),
   },
   data: () => ({
     items: [
