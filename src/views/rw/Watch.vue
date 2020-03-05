@@ -47,7 +47,7 @@
        ></v-icon>
       {{ item.text  }}
       </v-chip>
-                <v-divider dark></v-divider>
+      <v-divider dark></v-divider>
 
       </v-col>
       </v-row>
@@ -60,25 +60,23 @@
 
       <v-col md=5 xs=12 sm=12>
         <v-row>
-            <v-col cols=4 v-for="i in 3">
+            <v-col cols=4 v-for="(itemstatics, i) in statics">
             <v-card  color="transparent" dark>
-             <v-card-subtitle class="pb-0 title font-weight-bold white--text">315</v-card-subtitle>
-              <v-card-text class="grep--text caption">控制器数量</v-card-text>
+             <v-card-subtitle class="pb-0 title font-weight-bold white--text"><v-icon small :color="itemstatics.icon == 'fa-arrow-up'? 'red':'cyan'">{{ itemstatics.icon }}</v-icon> {{ itemstatics.cnt }}</v-card-subtitle>
+              <v-card-text class="grep--text caption">{{ itemstatics.type }}</v-card-text>
              </v-card>
            </v-col>
         </v-row>
         <v-row>
-           <v-col cols=4 v-for="i in 3">
-            <v-card  color="transparent" dark>
-             <v-card-subtitle class="pb-0 title font-weight-bold white--text">15</v-card-subtitle>
-              <v-card-text class="grep--text caption">损坏数量</v-card-text>
-             </v-card>
-           </v-col>
+                <pie name="name"/>
+                <pie name="name"/>
         </v-row>
       </v-col>
 
-      <v-col md=5 xs=12 sm=12 style="background:#f60">
-
+      <v-col md=5 xs=12 sm=12>
+      <v-card flat color='transparent' dark>
+        <histogram :histogram="showcode"/>
+       </v-card>
       </v-col>
       </v-row>
   </v-container>
@@ -87,7 +85,12 @@
 
 
 <script>
-  export default {
+export default {
+    name: 'watch',
+    components: {
+        histogram: () => import('./watch/Histogram'),
+        pie: () => import('./watch/Pie'),
+    },
     data: () => ({
       items: [
         {
@@ -113,8 +116,14 @@
       ],
       loading: false,
       selected: {text: 'DATABASE1',icon: 'fa-database'},
+      statics: [],
+      showcode: [],
     }),
 
+    created: function() {
+        this.init()
+        this.getcode()
+    },
     computed: {
     },
 
@@ -124,7 +133,40 @@
     methods: {
         filter(i) {
             this.selected = this.items[i]
-        }
+        },
+
+        getcode() {
+            const code=[]
+
+            for (let i = 0; i <= 360; i++) {
+                let t = i / 180 * Math.PI
+                let r = Math.sin(2 * t) * Math.cos(2 * t)
+                code.push([r, i])
+            }
+
+            this.showcode = code
+        },
+        init() {
+            let that=this;
+            this.$http.get("/watch").then(res => {
+                if (res.data.code === 200) {
+                    this.statics = res.data.data.statics
+                    this.$store.commit("snackbar/setSnackbar", {
+                        show: true,
+                        message: res.data.msg,
+                        color: "black",
+                        top: true
+                    });
+                    } else {
+                    this.$store.commit("snackbar/setSnackbar", {
+                        show: true,
+                        message: res.data.msg,
+                        color: "error",
+                        top: true
+                    });
+                }
+            })
+        },
     },
   }
 </script>

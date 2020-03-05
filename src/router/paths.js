@@ -17,6 +17,11 @@ export const publicRoute = [
         name: "watch",
         component: () => import("@/views/rw/Watch")
     },
+    {
+        path: "/chart",
+        name: "chart",
+        component: () => import("@/views/rw/watch/Histogram")
+    },
 ]
 
 
