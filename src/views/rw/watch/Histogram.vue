@@ -1,69 +1,71 @@
 <template>
-<div>
-<v-chart :options="polar"/>
-</div>
+    <v-chart :options="polar" />
 </template>
 
-<style>
-</style>
 
 <script>
-import ECharts from 'vue-echarts'
-import 'echarts/lib/chart/line'
-import 'echarts/lib/component/polar'
+import ECharts from "vue-echarts";
+import "echarts/lib/chart/line";
+import "echarts/lib/component/polar";
 
 export default {
   components: {
-    'v-chart': ECharts
+    "v-chart": ECharts
   },
   props: ["histogram"],
-  data () {
+  data() {
     return {
       polar: {
         title: {
-          text: 'Map关系',
+          text: "Map关系",
           textStyle: {
             color: ""
-          },
+          }
         },
         legend: {
-          data: ['code'],
+          data: ["code"],
           textStyle: {
             color: "#fff"
-          },
-
+          }
         },
         polar: {
-          center: ['50%', '54%']
+          center: ["50%", "54%"]
         },
         tooltip: {
-          trigger: 'axis',
+          trigger: "axis",
           axisPointer: {
-            type: 'cross'
+            type: "cross"
           }
         },
         angleAxis: {
-          type: 'value',
+          type: "value",
           startAngle: 0
         },
         radiusAxis: {
           min: 0
         },
-        textStyle:{
-            color:"#fff"
+        textStyle: {
+          color: "#fff"
         },
         series: [
           {
-            coordinateSystem: 'polar',
-            name: 'code',
-            type: 'line',
+            coordinateSystem: "polar",
+            name: "code",
+            type: "line",
             showSymbol: false,
             data: this.histogram
           }
         ],
         animationDuration: 2000
       }
-    }
+    };
   }
-}
+};
 </script>
+
+<style scoped>
+.echarts {
+  width: 100%;
+  height: 100%;
+}
+</style>
