@@ -1,5 +1,5 @@
 <template>
-  <v-chart :options="pie"></v-chart>
+  <v-chart :options="pie" autoresize></v-chart>
 </template>
 
 <script>
@@ -66,13 +66,6 @@ export default {
       }
     };
   },
-  mounted() {
-    const that = this;
-    window.onresize = () => {
-      //   let myChart = this.v - chart;
-      //   myChart.resize();
-    };
-  }
 };
 </script>
 

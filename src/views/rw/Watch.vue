@@ -129,7 +129,7 @@
 export default {
   name: "watch",
   components: {
-    histogram: () => import("./watch/Histogram"),
+    // histogram: () => import("./watch/Histogram"),
     pie: () => import("./watch/Pie"),
     lined: () => import("./watch/Line"),
     tasklog: () => import("./watch/Tasklog"),
