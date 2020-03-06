@@ -1,27 +1,43 @@
 <template>
  <section id="contact-us">
-      <v-row no-gutters style="background: linear-gradient(to right, #24243e, #141E30, #0f0c29);">
+ <v-row align="center" justify="center">
+     <v-card width=400 class="mt-6" flat>
+         <v-img src="index.png"></v-img>
+    </v-card>
+ </v-row>
+      <v-row no-gutters>
        <v-container dark class="text-center"
     >
-         <p class="headline">联系我们</p>
-           <v-responsive
-            class="mx-auto mb-8"
-          >
-            <v-divider class="mb-1"></v-divider>
-          </v-responsive>
-              <div class="text-center">
-             <v-btn class="mx-2" fab dark small color="primary">
-             <v-icon dark>fa-smile</v-icon>
+              <div class="text-center mx-6">
+             <v-btn class="mx-2" fab  small text>
+             <v-icon dark>fab fa-gitlab</v-icon>
              </v-btn>
-              <v-btn class="mx-2" fab dark small color="pink">
-               <v-icon>fa-charts</v-icon>
+              <v-btn class="mx-2" fab  small  text>
+               <v-icon>fab fa-qq</v-icon>
               </v-btn>
-             <v-btn class="mx-2" fab dark small color="indigo">
-            <v-icon dark>fa-qq</v-icon>
+             <v-btn class="mx-2" fab  small  text>
+            <v-icon dark>fab fa-github</v-icon>
+             </v-btn>
+              <v-btn class="mx-2" fab small  text>
+                <v-icon dark>fab fa-weixin</v-icon>
+             </v-btn>
+                 <v-btn class="mx-2" fab small  text>
+            <v-icon dark>fab fa-weibo</v-icon>
              </v-btn>
              </div>
           </v-container>
       </v-row>
+ <v-row align="center" justify="center" >
+     <v-col md=4 sm=6 xs=6 class="text-center">
+        <v-text-field outlined rounded dense
+        placeholder="邮箱"
+        append-icon="fa-paper-plane"
+></v-text-field>
+    <p class="subtitle-2">点击订阅，获取RW最新动态以及最新消息</p>
+    <v-divider class="mb-4"></v-divider>
+    <p class="overline"> No-one is promised tomorrow</p>
+     </v-col>
+ </v-row>
     </section>
 </template>
 
