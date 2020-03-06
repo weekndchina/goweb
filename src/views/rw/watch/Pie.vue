@@ -14,14 +14,19 @@ export default {
   data() {
     return {
       pie: {
-        tooltip: {
-          trigger: "item",
-          backgroundColor: "#222",
-          formatter: "{a} <br/>{b}: {c} ({d}%)"
-        },
+        //tooltip: {
+        //  trigger: "item",
+        //  backgroundColor: "#f60",
+        //  formatter: "{a} <br/>{b}: {c} ({d}%)"
+        // },
         legend: {
-          bottom: 10,
-          data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
+          top: 0,
+          data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"],
+          textStyle: {
+            color: 'grey',
+            fontSize: 10,
+            lineHeight: 10
+          }
         },
         series: [
           {
@@ -33,12 +38,12 @@ export default {
               normal: {
                 show: false,
                 position: "center",
-                formatter: "{a} {d}%"
+                formatter: "{a}"
               },
               emphasis: {
                 show: true,
                 textStyle: {
-                  fontSize: "30",
+                  fontSize: "12",
                   fontWeight: "bold"
                 }
               }
@@ -75,6 +80,6 @@ export default {
 <style scoped>
 .echarts {
   width: 100%;
-  height: 100%;
+  height: 300px;
 }
 </style>
