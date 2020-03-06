@@ -64,8 +64,8 @@ export default {
   mounted() {
     const that = this;
     window.onresize = () => {
-    //   let myChart = this.v - chart;
-    //   myChart.resize();
+      //   let myChart = this.v - chart;
+      //   myChart.resize();
     };
   }
 };
