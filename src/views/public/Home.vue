@@ -9,6 +9,7 @@
     <v-tabs right height="48">
         <v-tab class="caption font-weight-bold" @click="$vuetify.goTo('#about-us')">关于我们</v-tab>
         <v-tab class="caption font-weight-bold"  @click="$vuetify.goTo('#about-intro')">RW介绍</v-tab>
+         <v-tab class="caption font-weight-bold"  @click="$vuetify.goTo('#contact-us')">联系我们</v-tab>
     </v-tabs>
     <v-btn small color="deep-orange" outlined dense rounded class="ml-1" to='/login'>登陆</v-btn>
     <v-btn small color="indigo"  dense rounded class="ml-3">注册</v-btn>
