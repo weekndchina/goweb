@@ -80,26 +80,28 @@ export default {
   methods: {
     login() {
       let that = this;
-      this.$http.post("/login", {
-        ...this.model
-      }).then(res => {
-        if (res.data.code === 200) {
-          this.$store.commit("snackbar/setSnackbar", {
-            show: true,
-            message: res.data.msg,
-            color: "black",
-            top: true
-          });
-          
-        } else {
-          this.$store.commit("snackbar/setSnackbar", {
-            show: true,
-            message: res.data.msg,
-            color: "error",
-            top: true
-          });
-        }
-      });
+      this.$http
+        .post("/login", {
+          ...this.model
+        })
+        .then(res => {
+          if (res.data.code === 200) {
+            this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: res.data.msg,
+              color: "black",
+              top: true
+            });
+            this.$router.push({ path: "/task" });
+          } else {
+            this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: res.data.msg,
+              color: "error",
+              top: true
+            });
+          }
+        });
     },
     getImages() {
       this.$http.get("getImages").then(res => {
