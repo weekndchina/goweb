@@ -22,6 +22,11 @@ export const publicRoute = [
         name: "chart",
         component: () => import("@/views/rw/watch/Histogram")
     },
+    {
+        path: "*",
+        name: "notFount",
+        component: () => import("@/views/rw/common/404")
+    },
 ]
 
 

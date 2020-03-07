@@ -41,7 +41,7 @@
             prepend-icon="fa-user-check"
             label="电子邮件"
             v-model="model.username"
-            placeholder="rwplus@github.com"
+            placeholder="请输入邮箱或者用户名"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -72,15 +72,17 @@ export default {
   data: () => ({
     loading: false,
     model: {
-      username: "weeknd.su@wukongbox.com",
-      password: "123456"
+      username: "",
+      password: ""
     },
     images: []
   }),
   methods: {
     login() {
       let that = this;
-      this.$http.get("/login").then(res => {
+      this.$http.post("/login", {
+        ...this.model
+      }).then(res => {
         if (res.data.code === 200) {
           this.$store.commit("snackbar/setSnackbar", {
             show: true,
@@ -88,6 +90,7 @@ export default {
             color: "black",
             top: true
           });
+          
         } else {
           this.$store.commit("snackbar/setSnackbar", {
             show: true,
