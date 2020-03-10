@@ -26,7 +26,12 @@ export const publicRoute = [
     path: "*",
     name: "notFount",
     component: () => import("@/views/rw/common/404")
-  }
+  },
+  {
+    path: "/502",
+    name: "errSystem",
+    component: () => import("@/views/rw/common/502")
+  },
 ];
 
 // 仅登陆可看路由

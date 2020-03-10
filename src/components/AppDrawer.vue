@@ -7,7 +7,8 @@
       floating
       mini-variant
       dark
-      color="grey darken-4"
+      style="background:linear-gradient(to right, #24243e, #141E30, #0f0c29);"
+
     >
     <v-list nav dense
        class="py-0" >
@@ -28,7 +29,7 @@
           v-for="(item, i) in items"
           :key="i"
           :to="item.component"
-          color="deep-orange lighten-1"
+          color="cyan"
         >
           <v-list-item-icon>
             <v-icon v-text="item.icon" small></v-icon>

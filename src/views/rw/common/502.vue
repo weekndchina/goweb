@@ -8,9 +8,9 @@
     <v-col md=12 sm=12 xs=12>
           <v-row align="center" class="mx-auto white--text" justify="center">
         <v-card color="transparent" dark flat>
-        <p class="display-3 font-weight-bold indigo--text">404</p>
-        <p class="overline grey--text">看起来像是</p>
-        <p class="overline font-weight-bold grey--text">迷失在外太空</p>
+        <p class="display-3 font-weight-bold red--text">502</p>
+        <p class="overline grey--text">发生了意外的错误</p>
+        <p class="overline font-weight-bold grey--text">正在紧急修复中</p>
         <v-img src="img/rw.svg"></v-img>
         </v-card>
                 </v-row>
@@ -23,6 +23,6 @@
 
 <script>
 export default {
-    name: "notFound"
+    name: "errSystem"
 };
 </script>
