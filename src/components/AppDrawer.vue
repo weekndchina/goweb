@@ -13,7 +13,7 @@
        class="py-0" >
       <v-list-item two-line class="px-0">
             <v-list-item-avatar small>
-                wk
+                <v-img src="img/gen.svg"></v-img>
            </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title>weeknd</v-list-item-title>
