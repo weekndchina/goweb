@@ -28,9 +28,9 @@ export const publicRoute = [
     component: () => import("@/views/rw/common/404")
   },
   {
-    path: "/502",
-    name: "errSystem",
-    component: () => import("@/views/rw/common/502")
+    path: "/register",
+    name: "register",
+    component: () => import("@/views/public/Register")
   },
 ];
 
