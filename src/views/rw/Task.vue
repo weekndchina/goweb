@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-xl fluid>
+  <v-container grid-list-xl fluid style="background:linear-gradient(to right, #24243e, #141E30, #0f0c29);">
     <v-row>
       <v-col md="3" sm="6" xs="6">
         <v-card height="80">
