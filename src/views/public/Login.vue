@@ -1,70 +1,98 @@
 <template>
-  <v-container
-    fill-height
-    class="text-center"
-    fluid
-    style="background:linear-gradient(to right, #24243e, #141E30, #0f0c29);"
-  >
-    <v-col cols="12" md="6" sm="12" xs="12">
-      <v-row align="center" class="mx-auto white--text" justify="center">
-        <p class="overline font-weight-bold grey--text" dark>Members</p>
+<v-row no-gutters>
+
+<v-col cols="12" md=6 sx=12 sm=12>
+<v-container fill-height fluid>
+  <v-col cols="12" md="12" sm="12" xs="12">
+      <v-row align="center" class="mx-auto" justify="center">
+        <p class="title" >登陆RWPLUS</p>
       </v-row>
       <v-row align="center" class="mx-auto" justify="center">
-        <v-col cols="10">
-          <v-divider class="mb-6" dark></v-divider>
-          <v-avatar color="grey lighten-4" v-for="img in images" :key="img">
-            <img :src="img" alt="avatar" />
+          <v-avatar>
+            <img src="img/rw.svg" />
           </v-avatar>
-        </v-col>
       </v-row>
-
       <v-row align="center" class="mx-auto" justify="center">
-        <v-col cols="10">
-          <v-divider class="mx-6" dark></v-divider>
-          <p class="overline grey--text mt-6">
-            宗旨：工作中解决的问题，随手学到的知识，帮助小伙伴时的乐趣。
+          <p class="caption mt-6">
+               使用账号或者邮箱登陆
           </p>
+      </v-row>
+      <v-row align="center" class="mx-auto mt-3" justify="center">
+        <v-col cols="1">
+         <v-icon small right color="black">fa-user</v-icon>
         </v-col>
-      </v-row>
-    </v-col>
-    <v-col cols="12" md="6" sm="12" xs="12">
-      <v-row align="center" class="mx-auto white--text" justify="center">
-        <p class="headline indigo--text font-weight-bold uppercase">RWPLUS</p>
-      </v-row>
-
-      <v-row align="center" class="mx-auto white--text" justify="center">
-        <v-col cols="10">
+        <v-col cols="11" md=6 xs=6 sm=6>
           <v-text-field
-            dark
             dense
+            hide-details
             color="indigo"
-            prepend-icon="fa-user-check"
-            label="电子邮件"
-            v-model="model.username"
-            placeholder="请输入邮箱或者用户名"
+            label="用户名或者邮箱"
+            placeholder="rwplus"
           ></v-text-field>
         </v-col>
       </v-row>
-
-      <v-row align="center" class="mx-auto white--text" justify="center">
-        <v-col cols="10">
+      <v-row align="center" class="mx-auto" justify="center">
+         <v-col cols="1">
+         <v-icon small right color="black">fa-unlock</v-icon>
+        </v-col>
+        <v-col cols="11" md=6 xs=6 sm=6>
           <v-text-field
-            dark
             dense
+            hide-details
             color="indigo"
-            prepend-icon="fa-key"
             label="密码"
-            type="password"
-            v-model="model.password"
-            placeholder="password"
-          >
-          </v-text-field>
+            placeholder="123456"
+          ></v-text-field>
         </v-col>
       </v-row>
-      <v-btn small dark dense outlined rounded @click="login" color="deep-orange">登录</v-btn>
-      <v-btn small dark dense color="indigo" rounded class="ml-6" @click="register">注册</v-btn>
+        <v-row align="center" class="mx-auto mt-3" justify="center">
+        <v-col md=4 sm=4 xs=4>
+            <v-btn  small outlined rounded block small>登陆</v-btn>
+            </v-col>
+      </v-row>
+        <v-row align="center" class="mx-auto" justify="center">
+        <v-col md=6 xs=6 sm=6>
+           <p class="caption text-center">分享生活，享受code，享受工作。
+</p>
+            </v-col>
+      </v-row>
     </v-col>
-  </v-container>
+</v-container>
+</v-col>
+
+<v-col cols="12" md=6 xs=12 sm=12>
+<v-card height="100%" tile elevation="8" width="100%" style="background:linear-gradient(to right, #24243e, #141E30, #0f0c29);">
+<v-container fill-height>
+  <v-col cols="12" md="12" sm="12" xs="12">
+      <v-row align="center" class="mx-auto grey--text" justify="center">
+        <p class="display-1 teal--text">欢迎回来！</p>
+      </v-row>
+      <v-row align="center" class="mx-auto grey--text mt-3" justify="center">
+      <v-col md=4 xs=6 sm=6>
+        <p class="overline text-center">小伙伴，欢迎加入RWPLUS！希望在这里，你能开启一段有意义的旅程。</p>
+      </v-col>
+      </v-row>
+            <v-row align="center" class="mx-auto grey--text" justify="center">
+        <v-col md=1 sm=1 xs=1>
+            <v-divider dark></v-divider>
+        </v-col>
+      </v-row>
+
+      <v-row align="center" class="mx-auto grey--text mt-3" justify="center">
+        <v-col md=4 sm=6 xs=6>
+        <p class="overline text-center cyan--text">创建账号？</p>
+        </v-col>
+      </v-row>
+        <v-row align="center" class="mx-auto grey--text" justify="center">
+        <v-col md=4 sx=6 sm=6>
+            <v-btn block dark small outlined rounded color="cyan" to="/register">注册</v-btn>
+        </v-col>
+      </v-row>
+</v-col>
+</v-container>
+</v-card>
+</v-col>
+</v-row>
 </template>
 
 <script>

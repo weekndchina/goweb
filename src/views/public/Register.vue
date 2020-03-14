@@ -49,7 +49,7 @@
                 或者使用邮箱注册
           </p>
       </v-row>
-      <v-row align="center" class="mx-auto" justify="center">
+      <v-row align="center" class="mx-auto mt-3" justify="center">
         <v-col cols="1">
          <v-icon small right color="black">fa-user</v-icon>
         </v-col>
@@ -73,7 +73,7 @@
             hide-details
             color="indigo"
             label="邮箱"
-             placeholder="xxx@rwplus.com"
+            placeholder="xxx@rwplus.com"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -93,7 +93,7 @@
       </v-row>
         <v-row align="center" class="mx-auto mt-3" justify="center">
         <v-col md=4 sm=4 xs=4>
-            <v-btn  small outlined rounded block small> 注册</v-btn>
+            <v-btn  small outlined rounded block small to="/login"> 注册</v-btn>
             </v-col>
       </v-row>
         <v-row align="center" class="mx-auto" justify="center">
@@ -106,6 +106,7 @@
 </v-container>
 </v-col>
 </v-row>
+
 </template>
 
 
