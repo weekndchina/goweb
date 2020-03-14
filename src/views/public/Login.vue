@@ -62,7 +62,7 @@
         </v-col>
       </v-row>
       <v-btn small dark dense outlined rounded @click="login" color="deep-orange">登录</v-btn>
-      <v-btn small dark dense color="indigo" rounded class="ml-6">注册</v-btn>
+      <v-btn small dark dense color="indigo" rounded class="ml-6" @click="register">注册</v-btn>
     </v-col>
   </v-container>
 </template>
