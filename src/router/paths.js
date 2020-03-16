@@ -1,4 +1,4 @@
-import { DefaultLayout } from "@/components/layout";
+import { DefaultLayout } from "@/components/layout"
 
 // 设置对外open的路由
 export const publicRoute = [
@@ -8,9 +8,22 @@ export const publicRoute = [
     component: () => import("@/views/public/Home")
   },
   {
-    path: "/login",
-    name: "login",
-    component: () => import("@/views/public/Login")
+    path: "/join",
+    name: "join",
+    redirect: "/join/login",
+    component: () => import("@/views/public/join/Join"),
+    children: [
+      {
+        path: "login",
+        name: "login",
+        component: () => import("@/views/public/join/Login")
+      },
+      {
+        path: "register",
+        name: "register",
+        component: () => import("@/views/public/join/Register")
+      }
+    ]
   },
   {
     path: "/watch",
@@ -26,13 +39,8 @@ export const publicRoute = [
     path: "*",
     name: "notFount",
     component: () => import("@/views/rw/common/404")
-  },
-  {
-    path: "/register",
-    name: "register",
-    component: () => import("@/views/public/Register")
-  },
-];
+  }
+]
 
 // 仅登陆可看路由
 export const privateRoute = [
@@ -48,4 +56,4 @@ export const privateRoute = [
       }
     ]
   }
-];
+]
