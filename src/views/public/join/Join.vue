@@ -1,5 +1,5 @@
 <template>
-  <v-row no-gutters>
+  <v-row no-gutters class="move" :style="{'background-position-x': isLogin?'right':'left'}">
     <v-col cols="12" md="6" xs="12" sm="12" class="col-box left">
       <v-slide-y-transition hide-on-leave>
         <router-view v-if="isLogin"></router-view>
@@ -66,10 +66,9 @@ export default {
   right: 0;
 }
 .move {
-  position: absolute;
-  width: 50%;
-  height: 100%;
+  transition: all 0.3s ease-in-out;
   background: linear-gradient(to right, #24243e, #141e30, #0f0c29);
-  z-index: 1;
+  background-repeat: no-repeat;
+  background-size: 50% 100%;
 }
 </style>

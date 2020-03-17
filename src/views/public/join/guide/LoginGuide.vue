@@ -1,11 +1,5 @@
 <template>
-  <v-card
-    height="100%"
-    tile
-    elevation="8"
-    width="100%"
-    style="background:linear-gradient(to right, #24243e, #141E30, #0f0c29);"
-  >
+  <v-card height="100%" tile elevation="8" width="100%" style="background-color: transparent;">
     <v-container fill-height>
       <v-col cols="12" md="12" sm="12" xs="12">
         <v-row align="center" class="mx-auto grey--text" justify="center">
