@@ -1,22 +1,13 @@
 <template>
-  <v-row no-gutters class="move" :style="{'background-position-x': isLogin?'right':'left'}">
-    <v-col cols="12" md="6" xs="12" sm="12" class="col-box left">
-      <v-slide-y-transition hide-on-leave>
-        <router-view v-if="isLogin"></router-view>
-      </v-slide-y-transition>
-      <v-slide-x-reverse-transition>
-        <LoginGuide v-on:changeStatusEvent="changeStatus" v-if="!isLogin" />
-      </v-slide-x-reverse-transition>
+  <v-row no-gutters class="move" :style="backgroundStyle">
+    <v-col ref="left" cols="12" md="6" xs="12" sm="12" class="col-box left">
+      <router-view v-if="isLogin"></router-view>
+      <LoginGuide v-on:changeStatusEvent="changeStatus" v-if="!isLogin" />
     </v-col>
-    <v-col cols="12" md="6" xs="12" sm="12" class="col-box right">
-      <v-slide-y-transition hide-on-leave>
-        <router-view v-if="!isLogin"></router-view>
-      </v-slide-y-transition>
-      <v-slide-x-transition>
-        <RegisterGuide v-on:changeStatusEvent="changeStatus" v-if="isLogin" />
-      </v-slide-x-transition>
+    <v-col ref="right" cols="12" md="6" xs="12" sm="12" class="col-box right">
+      <router-view v-if="!isLogin"></router-view>
+      <RegisterGuide v-on:changeStatusEvent="changeStatus" v-if="isLogin" />
     </v-col>
-    <!-- <div class="move" :style="styleObject"></div> -->
   </v-row>
 </template>
 
@@ -32,43 +23,59 @@ export default {
   },
   data() {
     return {
-      isLogin: true
+      isLogin: true,
+      backgroundStyle: {
+        "background-position": "",
+        "background-size": "",
+        transition: ""
+      }
     };
   },
   methods: {
     changeStatus(loginStatus) {
       this.isLogin = loginStatus;
+    },
+    justifyBackground(isLogin, isClick = false, that = this) {
+      if (isClick) {
+        that.backgroundStyle["transition"] = "all 0.5s ease-in-out";
+      } else {
+        that.backgroundStyle["transition"] = "none";
+      }
+      that.$nextTick(() => {
+        const left = this.$refs.left.getClientRects()[0];
+        const right = this.$refs.right.getClientRects()[0];
+        const el = isLogin ? right : left;
+        this.backgroundStyle[
+          "background-position"
+        ] = `${el.left}px ${el.top}px`;
+        this.backgroundStyle[
+          "background-size"
+        ] = `${el.width}px ${el.height}px`;
+      });
     }
   },
-  computed: {
-    styleObject() {
-      return this.isLogin ? { right: 0 } : { left: 0 };
+  watch: {
+    isLogin(newVal, oldVal) {
+      // console.log(oldVal, newVal);
+      this.justifyBackground(newVal, true);
     }
   },
   created() {
     if (this.$route.path.indexOf("register") != -1) {
       this.isLogin = false;
     }
+  },
+  mounted() {
+    this.justifyBackground(this.isLogin, false);
+    window.addEventListener("resize", () => {
+      this.justifyBackground(this.isLogin, false);
+    });
   }
 };
 </script>
 <style lang="css" scoped>
-.col-box {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  z-index: 999;
-}
-.left {
-  left: 0;
-}
-.right {
-  right: 0;
-}
 .move {
-  transition: all 0.3s ease-in-out;
   background: linear-gradient(to right, #24243e, #141e30, #0f0c29);
   background-repeat: no-repeat;
-  background-size: 50% 100%;
 }
 </style>
