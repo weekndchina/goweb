@@ -1,8 +1,12 @@
 # GOWEB
 
+## Done
+
+- [x] Token Login
+- [x] Register
+- [x] Home
+
 ## THINGS ING
-- LOG IN
-- SIGN UP
 - CHAT ONLINE
 - TASK NOTICE
 - LOG MONITOR
