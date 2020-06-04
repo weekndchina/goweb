@@ -32,7 +32,7 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run: pwd && ls -l
-      - run: ping $SSH_HOST
+      - run: ssh $SSH_USER@$SSH_HOST
       - run:
           name: Deploy Over SSH
           command: |
