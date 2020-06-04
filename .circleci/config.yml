@@ -5,6 +5,7 @@ jobs:
       - image: circleci/node:8
     working_directory: /tmp/workspace
     steps:
+      - checkout
       - run:
           name: Install
           command: npm install
