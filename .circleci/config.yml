@@ -4,6 +4,7 @@ jobs:
     docker:
       - image: circleci/node:8
     working_directory: /tmp/workspace
+    steps:
       - run:
         name: Install
         command: npm install
