@@ -6,11 +6,11 @@ jobs:
     working_directory: /tmp/workspace
     steps:
       - run:
-        name: Install
-        command: npm install
+          name: Install
+          command: npm install
       - run:
-        name: Test
-        command: npm test
+          name: Test
+          command: npm test
 
   deploy:
     machine:
