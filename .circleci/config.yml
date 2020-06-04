@@ -1,17 +1,39 @@
-version: 2.1
-orbs:
-  node: circleci/node@1.1.6
+version: 2
 jobs:
-  build-and-test:
-    executor:
-      name: node/default
+  build:
+    docker:
+      - image: circleci/node:8
+    working_directory: /tmp/workspace
+      - run: echo "Start to build project"
+      - run: npm install
+      - run: echo "Start to test"
+      - run: npm test
+
+  deploy:
+    machine:
+      timezone:
+        Asia/Shanghai
+      enabled: true
+    working_directory: /tmp/workspace
     steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
+      - run: echo "Scp dist directory"
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: pwd && ls -al
+      - run:
+          name: Deploy Over SSH
+          command: |
+            scp -r `pwd`/dist $SSH_USER@$SSH_HOST:$SSH_WEB_DIR
+      - run: echo "copy finished"
+
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
