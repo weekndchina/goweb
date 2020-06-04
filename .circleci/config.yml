@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            scp -i ~/.ssh/id_rsa_4a4b4134a9fc94ae1e46062c8fc4b7b3 -r `pwd`/dist $SSH_USER@$SSH_HOST:$SSH_WEB_DIR
+            scp -q -r `pwd`/dist $SSH_USER@$SSH_HOST:$SSH_WEB_DIR
       - run: echo "copy finished"
 
 workflows:
