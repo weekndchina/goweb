@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/node:8
     working_directory: /tmp/workspace
-      - run: echo "Start to build project"
+      - run: echo "Start to install"
       - run: npm install
       - run: echo "Start to test"
       - run: npm test
