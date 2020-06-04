@@ -26,9 +26,9 @@ jobs:
       enabled: true
     working_directory: /tmp/workspace
     steps:
-      - run: pwd && ls -l
       - attach_workspace:
           at: /tmp/workspace
+      - run: pwd && ls -l
       - run:
           name: Deploy Over SSH
           command: |
