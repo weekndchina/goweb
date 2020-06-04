@@ -36,11 +36,10 @@ jobs:
             - "4a:4b:41:34:a9:fc:94:ae:1e:46:06:2c:8f:c4:b7:b3"
       - run: pwd && ls -l
       - run: ls -l ~/.ssh
-      - run: ssh $SSH_USER@$SSH_HOST
       - run:
           name: Deploy Over SSH
           command: |
-            scp -r `pwd`/dist $SSH_USER@$SSH_HOST:$SSH_WEB_DIR
+            scp -f ~/.ssh/id_rsa_4a4b4134a9fc94ae1e46062c8fc4b7b3 -r `pwd`/dist $SSH_USER@$SSH_HOST:$SSH_WEB_DIR
       - run: echo "copy finished"
 
 workflows:
