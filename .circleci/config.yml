@@ -31,10 +31,11 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp/workspace
-      - run: pwd && ls -l
       - add_ssh_keys:
           fingerprints:
             - "4a:4b:41:34:a9:fc:94:ae:1e:46:06:2c:8f:c4:b7:b3"
+      - run: pwd && ls -l
+      - run: ls -l ~/.ssh
       - run: ssh $SSH_USER@$SSH_HOST
       - run:
           name: Deploy Over SSH
