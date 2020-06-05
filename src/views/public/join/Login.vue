@@ -17,7 +17,7 @@
           <v-icon small right color="black">fa-user</v-icon>
         </v-col>
         <v-col cols="11" md="6" xs="6" sm="6">
-          <v-text-field dense hide-details color="indigo" label="用户名或者邮箱" placeholder="rwplus"></v-text-field>
+          <v-text-field dense hide-details color="indigo" label="用户名或者邮箱" placeholder="rwplus" v-model="model.username"></v-text-field>
         </v-col>
       </v-row>
       <v-row align="center" class="mx-auto" justify="center">
@@ -25,7 +25,7 @@
           <v-icon small right color="black">fa-unlock</v-icon>
         </v-col>
         <v-col cols="11" md="6" xs="6" sm="6">
-          <v-text-field dense hide-details color="indigo" label="密码" placeholder="123456"></v-text-field>
+          <v-text-field dense hide-details color="indigo" label="密码" placeholder="123456" v-model="model.password"></v-text-field>
         </v-col>
       </v-row>
       <v-row align="center" class="mx-auto mt-3" justify="center">

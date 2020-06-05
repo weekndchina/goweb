@@ -55,5 +55,17 @@ export const privateRoute = [
         component: () => import("@/views/rw/Task")
       }
     ]
+  },
+    {
+    path: "/mail",
+    component: DefaultLayout,
+    redirect: "/mail",
+    children: [
+      {
+        path: "/mail",
+        name: "mail",
+        component: () => import("@/views/rw/Mail")
+      }
+    ]
   }
 ]
