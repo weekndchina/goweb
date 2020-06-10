@@ -16,9 +16,10 @@
     </v-app-bar>
 
     <home-hero />
-    <home-us />
+    <!-- <home-us />
     <home-intro />
     <home-contact />
+    -->
   </div>
 </template>
 
