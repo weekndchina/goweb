@@ -1,56 +1,56 @@
 <template>
-  <v-container grid-list-xl fluid style="background:linear-gradient(to left, #24243e, #141E30, #0f0c29);">
+  <v-container grid-list-xl>
   <v-row>
     <v-col xs="12" md="6" cols="6">
-      <v-subheader dark class="overline">Mail Config</v-subheader>
-      <v-divider dark> </v-divider>
+      <v-subheader  class="overline">Mail Config</v-subheader>
+      <v-divider > </v-divider>
       <v-row class="mt-6">
         <v-col cols="12"
           md="4">
-          <v-text-field dark label="邮箱地址"
+          <v-text-field  label="邮箱地址"
             required dense class="caption" v-model="mail.Address"></v-text-field>
         </v-col>
         <v-col cols="12" md="4">
-          <v-text-field dark label="邮箱账号" required dense
+          <v-text-field  label="邮箱账号" required dense
           class="caption" v-model="mail.Account"></v-text-field>
         </v-col>
         <v-col cols="12"
           md="4">
-          <v-text-field dark label="账号口令" required dense class="caption"
+          <v-text-field  label="账号口令" required dense class="caption"
           v-model="mail.Token"></v-text-field>
         </v-col>
       </v-row>
-      <v-subheader dark class="overline">Company</v-subheader>
-      <v-divider dark> </v-divider>
+      <v-subheader  class="overline">Company</v-subheader>
+      <v-divider > </v-divider>
       <v-row class="mt-6">
       <v-col cols="12" md="10">
-        <v-text-field dark label="logo"
+        <v-text-field  label="logo"
           required dense class="caption" v-model="content.logo"></v-text-field>
       </v-col>
       <v-col cols="12" md="2">
-          <v-text-field dark label="名称"
+          <v-text-field label="名称"
             required dense class="caption" v-model="content.name"></v-text-field>
       </v-col>
       </v-row>
-          <v-subheader dark class="overline">Mail Content</v-subheader>
-          <v-divider dark class="mb-6"> </v-divider>
+          <v-subheader  class="overline">Mail Content</v-subheader>
+          <v-divider  class="mb-6"> </v-divider>
           <div v-for="item in content.data" :key="item.title">
           <v-row>
           <v-col cols="12"
             md="9">
-          <v-text-field dark label="导航图"
+          <v-text-field  label="导航图"
             required dense class="caption" v-model="item.img"></v-text-field>
             </v-col>
           </v-row>
           <v-row>
           <v-col cols="12"
             md="6">
-          <v-text-field dark label="大标题"
+          <v-text-field label="大标题"
             required dense class="caption" v-model="item.title"></v-text-field>
           </v-col>
           <v-col cols="12"
             md="6">
-          <v-text-field dark label="大标题"
+          <v-text-field  label="大标题"
             required dense class="caption" v-model="item.subtitle"></v-text-field>
           </v-col>
           </v-row>
@@ -58,7 +58,6 @@
             <v-col cols="12"
             md="12">
             <v-textarea
-              dark
               outlined
               label="正文"
               class="caption"
