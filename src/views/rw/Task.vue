@@ -27,7 +27,7 @@
     <v-icon small right>fa-tag</v-icon>
   </v-col>
   <v-col cols="12" md="9" sm="9" xs="9">
-    <v-text-field  dense hint="Task标题" label="title"
+    <v-text-field  v-model="name" dense hint="Task标题" label="title"
       class='caption'    persistent-hint ></v-text-field>
   </v-col>
 </v-row>
@@ -38,7 +38,7 @@
   </v-col>
   <v-col cols="12" md="5" sm="5" xs="5">
     <v-select class="caption" hint="Task等级Picker"
-        label="level"  persistent-hint dense :items='["red","orange","info","success"]'></v-select>
+      v-model="color"  label="level"  persistent-hint dense :items='["red","orange","info","success"]'></v-select>
   </v-col>
 </v-row>
 
@@ -142,7 +142,7 @@
 </v-card-text>
 
 <v-card-actions>
-  <v-btn dense dark flat color="#212121" small @click="addevent = false" class="caption">保存</v-btn>
+  <v-btn dense dark flat color="#212121" small @click="addEvent" class="caption">保存</v-btn>
   <v-btn dense dark small color="#212121" small @click="addevent = false" class="caption">取消</v-btn>
   <v-spacer></v-spacer>
   <v-btn dense small outlined @click="addevent = false" class="caption">更多</v-btn>
@@ -260,6 +260,8 @@
 <script>
 export default {
     data: () => ({
+      name: '',
+      color: '',
       datemodel: false,
       datetime: null,
       endmodel: false,
@@ -377,6 +379,21 @@ export default {
       updateRange({start, end}) {
           this.start = start
           this.end = end
+      },
+      addEvent() {
+        this.events.push({
+          name: this.name,
+          start: this.datetime +' '+ this.starttime,
+          end: this.datetime + ' ' + this.endtime,
+          color: this.color
+        })
+
+        this.name = ''
+        this.datetime = null
+        this.starttime = null
+        this.endtime = null
+        this.color = ''
+        this.addevent = false
       },
     },
 }
