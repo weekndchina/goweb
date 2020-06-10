@@ -1,6 +1,5 @@
 <template>
     <v-navigation-drawer
-      v-model="drawer"
       app
       expand-on-hover
       floating

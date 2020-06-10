@@ -218,35 +218,58 @@
     >
       <v-card
         color="grey lighten-4"
-        min-width="350px"
+        max-width="350px"
         flat
       >
-        <v-toolbar
+        <v-app-bar
+          flat
           :color="selectedEvent.color"
           dark
+          min-width="360"
+          dense
         >
-          <v-btn icon>
-            <v-icon>mdi-pencil</v-icon>
-          </v-btn>
-          <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
+          <v-toolbar-title class="subtitle-2 font-weight-bold overline">task</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-btn icon>
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
-          <v-btn icon>
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </v-toolbar>
-        <v-card-text>
-          <span v-html="selectedEvent.details"></span>
-        </v-card-text>
-        <v-card-actions>
+        </v-app-bar>
+
+        <v-list dense>
+          <v-list-item>
+            <v-list-item-icon><v-icon small :color="selectedEvent.color">fa-tag</v-icon></v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title v-text="selectedEvent.name"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-icon><v-icon small>fa-calendar</v-icon></v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title v-text="selectedEvent.start+' --- '+ selectedEvent.end"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+          <v-list-item-icon><v-icon small>fa-level-up-alt</v-icon></v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title v-text="selectedEvent.color"></v-list-item-title>
+          </v-list-item-content>
+          </v-list-item>
+        </v-list>
+        <v-card-actions color="cyan">
           <v-btn
             text
-            color="secondary"
+            dense
+            small
+            class="caption"
             @click="selectedOpen = false"
           >
-            Cancel
+            <v-icon small>fa-edit</v-icon>编辑
+          </v-btn>
+          <v-btn
+            text
+            dense
+            small
+            class="caption"
+            @click="selectedOpen = false"
+          >
+            <v-icon small>fa-trash-alt</v-icon>丢弃
           </v-btn>
         </v-card-actions>
       </v-card>

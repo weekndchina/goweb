@@ -8,9 +8,10 @@
       color="#212121"
       hide-on-scroll
       >
-      <v-btn icon color="black" tile @click.stop="show = !show">
+      <v-btn icon color="black" tile @click="handerDrawerToggle">
            <v-icon small color="cyan">fa-braille</v-icon>
       </v-btn>
+      <app-galaxy></app-galaxy>
     <v-subheader class="font-weight-bold white--text">weekndCN</v-subheader>
     <v-spacer></v-spacer>
     <v-text-field
@@ -99,9 +100,12 @@
 </template>
 <script>
 
+
 export default {
   name: "AppToolbar",
   components: {
+  },
+  props: {
   },
   data() {
     return {
@@ -122,6 +126,8 @@ export default {
   computed: {
   },
   methods: {
+    handerDrawerToggle() {
+    }
   }
 }
 </script>
