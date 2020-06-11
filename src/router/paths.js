@@ -67,5 +67,17 @@ export const privateRoute = [
         component: () => import("@/views/rw/Mail")
       }
     ]
+  },
+  {
+  path: "/upload",
+  component: DefaultLayout,
+  redirect: "/upload",
+  children: [
+    {
+      path: "/upload",
+      name: "upload",
+      component: () => import("@/views/rw/Upload")
+    }
+    ]
   }
 ]

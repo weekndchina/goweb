@@ -3,6 +3,7 @@ const Menu = [
         { text: '统计', icon: 'fa-chart-line', component: "home"},
         { text: '日志', icon: 'fa-calendar-check', component: "log"},
         { text: '邮件', icon: 'fa-mail-bulk', component: "mail"},
+        { text: '文件', icon: 'fa-link', component: "upload"},
 ]
 
 Menu.forEach(item => {
