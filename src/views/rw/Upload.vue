@@ -6,7 +6,7 @@
 </v-toolbar>
 </v-row>
 <v-row class="fill-height">
-  <v-col cols="3" md="3">
+  <v-col cols="4" md="4">
   <v-treeview
     v-model="tree"
     :open="open"
@@ -26,20 +26,48 @@
    </template>
   </v-treeview>
  </v-col>
-  <v-col cols="3" md="6">
+  <v-col cols="4" md="4">
   <v-card
   flat
   class="mx-lg-auto"
-  color="white"
+  color="#f3f2f1"
   height="100%"
   >
-  <v-card-subtitle class="pb-0 mb-4 black--text subtitle-2">README.md</v-card-subtitle>
-  <v-divider></v-divider>
-  <v-card-text>
-    <h1 class="headline font-weight-bold">rwplus</h1>
-  </v-card-text>
 </v-card>
   </v-col>
+    <v-col cols="4" md="4">
+      <v-row>
+        <v-subheader class="caption font-weight-bold">上传文件</v-subheader>
+
+      </v-row>
+      <v-divider class="mb-4"></v-divider>
+      <v-row>
+      <v-col cols="3">
+        <p class="overline">上传目录</p>
+      </v-col>
+      <v-col cols="9">
+        <v-text-field hint="默认是当前路径" dense class="caption mt-0" persistent-hint placeholder="Directory"></v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+      <v-col cols="3">
+        <p class="overline">上传文件</p>
+      </v-col>
+      <v-col cols="9">
+      <v-card
+        class="mx-auto"
+        color="#f3f2f1"
+        height="150"
+        outlined
+      >
+
+      <v-card-title class="caption mt-12 ml-12">
+        拖拽文件到此上传文件
+      </v-card-title>
+      </v-card>
+      </v-col>
+      </v-row>
+    </v-col>
 </v-row>
 </v-container>
 </template>
