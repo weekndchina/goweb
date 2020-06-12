@@ -11,7 +11,6 @@
       <v-btn icon color="black" tile @click="handerDrawerToggle">
            <v-icon small color="cyan">fa-braille</v-icon>
       </v-btn>
-      <app-galaxy></app-galaxy>
     <v-subheader class="font-weight-bold white--text">weekndCN</v-subheader>
     <v-spacer></v-spacer>
     <v-text-field

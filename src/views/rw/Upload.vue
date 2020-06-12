@@ -13,12 +13,13 @@
     </v-row>
     <v-divider class="mb-4"></v-divider>
   <v-row>
+    <v-col cols="12">
   <v-treeview
-    v-model="tree"
-    :open="open"
+    :active.sync="active"
+    :open.sync="open"
     :items="items"
     activatable
-    item-key="name"
+    :load-children="fetchFiles"
     open-on-click
     class="caption"
     >
@@ -31,6 +32,7 @@
     </v-icon>
    </template>
   </v-treeview>
+  </v-col>
   </v-row>
  </v-col>
 
@@ -41,34 +43,73 @@
   <v-divider class="mb-4"></v-divider>
   <v-row>
   <v-col cols="12">
+  <div v-if="selected && selected.file != 'png'">
   <v-card height=200 outlined>
-    <v-img src="index.png">
-    </v-img>
+    <p class="overline">该文件格式不支持预览</p>
   </v-card>
+  </div>
+  <div v-else-if="!selected">
+  <v-card height=200 outlined>
+      <p class="overline">选择文件后即可查看信息</p>
+  </v-card>
+  </div>
+  <div v-else="selected">
+  <v-card height=200 outlined>
+      <v-img src=""></v-img>
+  </v-card>
+  </div>
   </v-col>
   <v-col cols="3">
     <p class="overline text--right">文件名称</p>
   </v-col>
   <v-col cols="9">
-    <p class="caption">README.md</p>
+  <div v-if="selected && selected.file != null">
+  <p class="caption">{{ selected.name }}</p>
+  </div>
+  <div v-else="!selected">
+  <p class="caption"></p>
+  </div>
   </v-col>
+
+
+
+
+
+
+
   <v-col cols="3">
     <p class="overline">FUUID</p>
   </v-col>
   <v-col cols="9">
-    <p class="caption">32DF1BCB7CAA0CED3D0385D1825FE8EC</p>
+  <div v-if="selected">
+  <p class="caption">{{ selected.fuuid }}</p>
+  </div>
+  <div v-else="!selected">
+  <p class="caption"></p>
+  </div>
   </v-col>
   <v-col cols="3">
     <p class="overline">域名配置</p>
   </v-col>
   <v-col cols="9">
-    <v-text-field outlined hide-details dense class="caption">https://oss.rwplus.cn</v-text-field>
+    <v-text-field outlined hide-details dense class="caption" v-model="domain"></v-text-field>
   </v-col>
   <v-col cols="3">
     <p class="overline">文件URL</p>
   </v-col>
   <v-col cols="9">
-    <p class="caption">http://oss.rwplus.cn/test/1.png</p>
+    <div v-if="selected && selected.file != null">
+    <p class="caption">{{ domain }}/{{ selected.name }}</p>
+    </div>
+    <div v-else>
+    <p class="caption"></p>
+    </div>
+  </v-col>
+  <v-col cols="3">
+    <p class="overline">文件类型</p>
+  </v-col>
+  <v-col cols="9">
+    <p class="caption">md</p>
   </v-col>
   <v-col cols="12">
   <v-btn outlined  small class="caption">下载文件</v-btn>
@@ -87,10 +128,13 @@
       <v-divider class="mb-4"></v-divider>
       <v-row>
       <v-col cols="3">
-        <p class="overline">上传目录</p>
+        <p class="overline"> 上传路径 </p>
       </v-col>
       <v-col cols="9">
-        <v-text-field hint="默认是当前路径" dense class="caption mt-0" persistent-hint placeholder="Directory"></v-text-field>
+        <v-text-field hint="默认是当前路径" dense class="caption mt-0"
+        persistent-hint placeholder="Directory"
+        >
+        </v-text-field>
         </v-col>
       </v-row>
       <v-row>
@@ -143,6 +187,7 @@
 export default {
   data: () => ({
       uploadfiles: [],
+      selection: [],
       open: ['public'],
       files: {
         html: 'mdi-language-html5',
@@ -154,61 +199,47 @@ export default {
         txt: 'mdi-file-document-outline',
         xls: 'mdi-file-excel',
       },
-      tree: [],
-      items: [
-        {
-          name: '.git',
-        },
-        {
-          name: 'node_modules',
-        },
-        {
-          name: 'public',
-          children: [
-            {
-              name: 'static',
-              children: [{
-                name: 'logo.png',
-                file: 'png',
-              }],
-            },
-            {
-              name: 'favicon.ico',
-              file: 'png',
-            },
-            {
-              name: 'index.html',
-              file: 'html',
-            },
-          ],
-        },
-        {
-          name: '.gitignore',
-          file: 'txt',
-        },
-        {
-          name: 'babel.config.js',
-          file: 'js',
-        },
-        {
-          name: 'package.json',
-          file: 'json',
-        },
-        {
-          name: 'README.md',
-          file: 'md',
-        },
-        {
-          name: 'vue.config.js',
-          file: 'js',
-        },
-        {
-          name: 'yarn.lock',
-          file: 'txt',
-        },
-      ],
+      active: [],
+      items: [],
+      domain: '',
     }),
+    computed: {
+      selected () {
+        if (!this.active.length) return undefined
+        const id = this.active[0]
+        return this.items.find(item => item.id === id)
+      },
+    },
+    mounted: function() {
+      this.fetchFiles();
+    },
+    watch: {
+      selected: 'weeknd',
+    },
+    methods: {
+      fetchFiles() {
+        let that = this;
+        this.$http.get("/getFiles").then(res => {
+          if (res.data.code === 200) {
+            this.items = res.data.data.items;
+            this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: res.data.msg,
+              color: "black",
+              top: true
+            });
+          } else {
+            this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: res.data.msg,
+              color: "error",
+              top: true
+            });
+          }
+        });
+    },
   }
+}
 </script>
 
 

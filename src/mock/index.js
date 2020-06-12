@@ -62,9 +62,126 @@ const avatorImages = () => {
   };
 };
 
+const treeLists = () => {
+  return {
+    code: 200,
+    data: {
+      items: [
+        {
+          id: '1',
+          name: '.git',
+          path: '/.git/',
+        },
+        {
+          id: '2',
+          name: 'node_modules',
+          path: '/node_modules/',
+        },
+        {
+          id: '3',
+          name: 'public',
+          path: '/public/',
+          children: [
+            {
+              id: '4',
+              name: 'static',
+              path: '/public/static/',
+              children: [{
+                name: 'logo.png',
+                file: 'png',
+                path: '/public/static/',
+                fuuid: '32DF1BCB7CAA0CED3D0385D1825FE8EC',
+              }],
+            },
+            {
+              id: '5',
+              name: 'favicon.ico',
+              file: 'png',
+              path: '/public/static/',
+              fuuid: '32DF1BCB7CAA0CED3D0385D1825FE8EC',
+            },
+            {
+              id: '6',
+              name: 'index.html',
+              file: 'html',
+              path: '/public/static/',
+              fuuid: '32DF1BCB7CAA0CED3D0385D1825FE8EC',
+            },
+          ],
+        },
+        {
+          id: '7',
+          name: '.gitignore',
+          file: 'txt',
+          path: '/',
+          fuuid: '32DF1BCB7CAA0CED3D0385D1825FE8EC',
+        },
+        {
+          id: 8,
+          name: 'babel.config.js',
+          file: 'js',
+          path: '/',
+          fuuid: '32DF1BCB7CAA0CED3D0385D1825FE8EC',
+        },
+        {
+          id: 9,
+          name: 'package.json',
+          file: 'json',
+          path: '/',
+          fuuid: '32DF1BCB7CAA0CED3D0385D1825FE8EC',
+        },
+        {
+          id: 10,
+          name: 'README.md',
+          file: 'md',
+          path: '/',
+          fuuid: '32DF1BCB7CAA0CED3D0385D1825FE8EC',
+        },
+        {
+          id: 11,
+          name: 'vue.config.js',
+          file: 'js',
+          path: '/',
+          fuuid: '32DF1BCB7CAA0CED3D0385D1825FE8EC',
+        },
+        {
+          id: 12,
+          name: 'yarn.lock',
+          file: 'txt',
+          path: '/',
+          fuuid: '32DF1BCB7CAA0CED3D0385D1825FE8EC',
+        },
+      ]
+    },
+    msg: "get ok"
+  }
+}
+
+
+const fileDetails = (name) => {
+  return {
+    code: 200,
+    data: {
+      items: [
+        {
+          path: '/',
+        },
+        {
+          name: 'node_modules',
+        },
+      ]
+    },
+    msg: "get ok"
+  }
+}
+
+
+
 // 定义请求链接，类型，还有返回数据
 Mock.mock(`${domain}/login`, "post", userData);
 
 Mock.mock(`${domain}/watch`, "get", watchData);
 
 Mock.mock(`${domain}/getImages`, "get", avatorImages);
+
+Mock.mock(`${domain}/getFiles`, "get", treeLists);
