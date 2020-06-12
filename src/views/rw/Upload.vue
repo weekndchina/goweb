@@ -3,6 +3,18 @@
 <v-row>
 <v-toolbar color="#f3f2f1" flat dense>
 <v-btn small outlined dark color="#212121"> 新建目录</v-btn>
+<v-spacer></v-spacer>
+<v-text-field
+  v-model="search"
+  placeholder="检索文件"
+  class="caption"
+  background-color="#212121"
+  dark
+  rounded
+  flat
+  hide-details
+  dense
+></v-text-field>
 </v-toolbar>
 </v-row>
 <v-row class="fill-height">
@@ -22,6 +34,8 @@
     :load-children="fetchFiles"
     open-on-click
     class="caption"
+    :search="search"
+    :filter="filter"
     >
   <template v-slot:prepend="{ item, open }">
     <v-icon v-if="!item.file" small>
@@ -202,12 +216,19 @@ export default {
       active: [],
       items: [],
       domain: '',
+      search: null,
+      caseSensitive: false,
     }),
     computed: {
       selected () {
         if (!this.active.length) return undefined
         const id = this.active[0]
         return this.items.find(item => item.id === id)
+      },
+      filter () {
+          return this.caseSensitive
+            ? (item, search, textKey) => item[textKey].indexOf(search) > -1
+            : undefined
       },
     },
     mounted: function() {
