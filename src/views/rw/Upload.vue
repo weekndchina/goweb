@@ -6,7 +6,13 @@
 </v-toolbar>
 </v-row>
 <v-row class="fill-height">
+
   <v-col cols="4" md="4">
+  <v-row>
+    <v-subheader class="caption font-weight-bold">文件目录</v-subheader>
+    </v-row>
+    <v-divider class="mb-4"></v-divider>
+  <v-row>
   <v-treeview
     v-model="tree"
     :open="open"
@@ -25,16 +31,54 @@
     </v-icon>
    </template>
   </v-treeview>
+  </v-row>
  </v-col>
+
   <v-col cols="4" md="4">
-  <v-card
-  flat
-  class="mx-lg-auto"
-  color="#f3f2f1"
-  height="100%"
-  >
-</v-card>
+  <v-row>
+    <v-subheader class="caption font-weight-bold">文件信息</v-subheader>
+  </v-row>
+  <v-divider class="mb-4"></v-divider>
+  <v-row>
+  <v-col cols="12">
+  <v-card height=200 outlined>
+    <v-img src="index.png">
+    </v-img>
+  </v-card>
   </v-col>
+  <v-col cols="3">
+    <p class="overline text--right">文件名称</p>
+  </v-col>
+  <v-col cols="9">
+    <p class="caption">README.md</p>
+  </v-col>
+  <v-col cols="3">
+    <p class="overline">FUUID</p>
+  </v-col>
+  <v-col cols="9">
+    <p class="caption">32DF1BCB7CAA0CED3D0385D1825FE8EC</p>
+  </v-col>
+  <v-col cols="3">
+    <p class="overline">域名配置</p>
+  </v-col>
+  <v-col cols="9">
+    <v-text-field outlined hide-details dense class="caption">https://oss.rwplus.cn</v-text-field>
+  </v-col>
+  <v-col cols="3">
+    <p class="overline">文件URL</p>
+  </v-col>
+  <v-col cols="9">
+    <p class="caption">http://oss.rwplus.cn/test/1.png</p>
+  </v-col>
+  <v-col cols="12">
+  <v-btn outlined  small class="caption">下载文件</v-btn>
+  <v-btn outlined  small class="ml-4 caption">删除文件</v-btn>
+  </v-col>
+  </v-row>
+  </v-col>
+
+
+
     <v-col cols="4" md="4">
       <v-row>
         <v-subheader class="caption font-weight-bold">上传文件</v-subheader>
