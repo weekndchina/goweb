@@ -51,20 +51,42 @@
       </v-row>
       <v-row>
       <v-col cols="3">
-        <p class="overline">上传文件</p>
+      <p class="overline">上传文件</p>
       </v-col>
       <v-col cols="9">
-      <v-card
-        class="mx-auto"
-        color="#f3f2f1"
-        height="150"
-        outlined
-      >
 
-      <v-card-title class="caption mt-12 ml-12">
-        拖拽文件到此上传文件
-      </v-card-title>
-      </v-card>
+    <v-file-input
+    v-model="uploadfiles"
+    :clearable="false"
+    counter
+    label="File input"
+    class="caption mx-auto"
+    multiple
+    placeholder="请选择上传文件"
+    outlined
+    prepend-icon=""
+    height="150"
+    :show-size="1000"
+  >
+    <template v-slot:selection="{ index, text }">
+      <v-chip
+        v-if="index < 2"
+        color="#212121"
+        dark
+        label
+        small
+      >
+        {{ text }}
+      </v-chip>
+
+      <span
+        v-else-if="index === 2"
+        class="overline grey--text text--darken-3 mx-2"
+      >
+        +{{ files.length - 2 }} File(s)
+      </span>
+    </template>
+  </v-file-input>
       </v-col>
       </v-row>
     </v-col>
@@ -76,6 +98,7 @@
 <script>
 export default {
   data: () => ({
+      uploadfiles: [],
       open: ['public'],
       files: {
         html: 'mdi-language-html5',
