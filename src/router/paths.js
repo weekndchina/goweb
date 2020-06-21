@@ -56,6 +56,18 @@ export const privateRoute = [
       }
     ]
   },
+  {
+    path: "/log",
+    component: DefaultLayout,
+    redirect: "/log",
+    children: [
+      {
+        path: "/log",
+        name: "log",
+        component: () => import("@/views/rw/Log")
+      }
+    ]
+  },
     {
     path: "/mail",
     component: DefaultLayout,
